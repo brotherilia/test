@@ -1,0 +1,35 @@
+@base-color: rgb(110, 27, 255);
+@error-color: spin(@base-color, 60);
+@info-color: spin(@base-color, -60);
+@warning-color: spin(@base-color, 120);
+@success-color: spin(@base-color, -120);
+
+.generate-colors(@color) {
+  @bg-color: lighten(@color, 35%);
+
+  background-color: @bg-color;
+  color: darken(@bg-color, 50%);
+  border-color: darken(spin(@bg-color, -10), 5%);
+}
+
+.alert {
+  &-primary {
+    .generate-colors(@base-color);
+  }
+
+  &-error {
+    .generate-colors(@error-color);
+  }
+
+  &-info {
+    .generate-colors(@info-color);
+  }
+
+  &-warning {
+    .generate-colors(@warning-color);
+  }
+
+  &-success {
+    .generate-colors(@success-color);
+  }
+}
